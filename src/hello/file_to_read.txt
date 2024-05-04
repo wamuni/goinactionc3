@@ -1,0 +1,2 @@
+This is the file to read
+To check if the the word count function works
