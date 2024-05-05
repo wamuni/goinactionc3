@@ -27,9 +27,43 @@ func main() {
 		// and if it's nil, then it can't use *
 		fmt.Println(index, num)
 	}
+	print_separater()
 
 	arr_string := [5]string{"Red", "Green", "Blue", "Yellow", "Orange"}
 	print_array_string(arr_string)
+
+	// array_string_pointer and copy between two arrays
+	arr_string_pointer := [3]*string{new(string), new(string), new(string)}
+	*arr_string_pointer[0] = "Blue"
+	*arr_string_pointer[1] = "Red"
+	*arr_string_pointer[2] = "Yellow"
+	//TODO: Review the format to print different data type
+	for index, str := range arr_string_pointer {
+		fmt.Printf("The address %d of string in array is %o, and the value is %s\n", index+1, str, *str)
+		fmt.Printf("The address %d of string in array is 0x%x, and the value is %s\n", index+1, str, *str)
+	}
+	print_separater()
+
+	var arr_string_pointer_copy = arr_string_pointer
+	*arr_string_pointer_copy[1] = "Eddie"
+	for index, str := range arr_string_pointer_copy {
+		fmt.Printf("The address %d of string in array is %o, and the value is %s\n", index+1, str, *str)
+		fmt.Printf("The address %d of string in array is 0x%x, and the value is %s\n", index+1, str, *str)
+	}
+	print_separater()
+	for index, str := range arr_string_pointer {
+		fmt.Printf("The address %d of string in array is %o, and the value is %s\n", index+1, str, *str)
+		fmt.Printf("The address %d of string in array is 0x%x, and the value is %s\n", index+1, str, *str)
+	}
+
+	// copy of two arrays with primitive data type
+	var arr_string_copy = arr_string
+	arr_string_copy[1] = "Eddie"
+	print_separater()
+	print_array_string(arr_string)
+	print_separater()
+	print_array_string(arr_string_copy)
+
 }
 
 // TODO: what is the difference between []int and []string
