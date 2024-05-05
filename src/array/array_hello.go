@@ -64,6 +64,12 @@ func main() {
 	print_separater()
 	print_array_string(arr_string_copy)
 
+	// 2-D array
+	arr_2d := [4][2]int{{10, 1}, {20, 2}, {30, 3}, {40, 4}}
+	for _, arr := range arr_2d {
+		fmt.Printf("The %d value is %d\n", arr[1], arr[0])
+	}
+
 }
 
 // TODO: what is the difference between []int and []string
