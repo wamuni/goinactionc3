@@ -16,6 +16,17 @@ func main() {
 	arr_third := [5]int{1: 20, 2: 40}
 	print_separater()
 	print_array(arr_third[:])
+
+	// get access of pointer value of array
+	arr_pointer := [5]*int{0: new(int), 1: new(int)}
+	*arr_pointer[0] = 10
+	*arr_pointer[1] = 20
+	for index, num := range arr_pointer {
+		// if variable is declared by new, there will be no zero-value initialized
+		// instead, it will be initialized as nil
+		// and if it's nil, then it can't use *
+		fmt.Println(index, num)
+	}
 }
 
 func print_array(arr []int) {
