@@ -66,6 +66,25 @@ func main() {
 	fmt.Printf("New change in slice_to_test_append: %d\n", slice_to_test_append[1])
 	fmt.Printf("New change in slice_to_test_append_slice: %d\n", slice_to_test_append_slice[1])
 
+	print_separater()
+	// check before a new array is created
+	slice_before_append_double := make([]int, 3, 5) // len: 3, cap: 5
+	for i := 0; i < len(slice_before_append_double); i++ {
+		slice_before_append_double[i] = 10 * (1 + i)
+	}
+
+	slice_before_append_double_slice := slice_before_append_double
+	print_slice_len_cap_int(slice_before_append_double)
+	print_slice_len_cap_int(slice_before_append_double_slice)
+	slice_before_append_double_slice = append(slice_before_append_double_slice, 40)
+	print_slice_len_cap_int(slice_before_append_double_slice)
+	print_slice_len_cap_int(slice_before_append_double)
+
+	slice_before_append_double[1] = 1000
+	fmt.Printf("The new change in slice_before_append_double %d\n", slice_before_append_double[1])
+	fmt.Printf("The new change in slice_before_append_double_slice %d\n", slice_before_append_double_slice[1])
+	//? It won't change if the append didn't double the array size
+
 }
 
 func append_algorithm_check() {
