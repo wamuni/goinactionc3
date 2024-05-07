@@ -21,8 +21,15 @@ func main() {
 	slice_arr := []int{1, 2, 3}
 	fmt.Printf("The length of slice: %d\n", len(slice_arr))
 
-	var slice_nil []string
+	var slice_nil []string           // this will declare a null slice
+	slice_empty := make([]string, 0) // this will declare an empty slice
+	slice_empty_iteral := []string{} // this will declare an empty slice
+	//TODO: what will be the difference between a nil slice and empty slice
+	//! nil slice is used for return value of handling errors
+	//! empty slice is used for indicating 0 value returned
 	print_slice_len_cap(slice_nil)
+	print_slice_len_cap(slice_empty)
+	print_slice_len_cap(slice_empty_iteral)
 }
 
 func print_slice_len_cap(slice []string) {
