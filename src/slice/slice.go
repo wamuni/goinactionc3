@@ -48,6 +48,24 @@ func main() {
 	// append algorithm check
 	// append_algorithm_check()
 
+	print_separater()
+	//TODO: Since append will return an new slice instance, will the array associated with it changes after expanding
+	//TODO: Sub task: how to tell if the array is new
+	slice_to_test_append := []int{10, 20, 30, 40, 50} // len:5, cap: 5
+	print_slice_len_cap_int(slice_to_test_append)
+	slice_to_test_append_slice := slice_to_test_append[:] //len: 5, cap: 5
+	print_slice_len_cap_int(slice_to_test_append_slice)
+	slice_to_test_append_slice = append(slice_to_test_append_slice, 60)
+	//? Based on the code below, slices has different cap
+	print_slice_len_cap_int(slice_to_test_append_slice)
+	print_slice_len_cap_int(slice_to_test_append)
+
+	slice_to_test_append[1] = 100
+	//? The slice will point to different array
+	//? Therefore, there will be an operation of copying whole array to a new one -> O(n)
+	fmt.Printf("New change in slice_to_test_append: %d\n", slice_to_test_append[1])
+	fmt.Printf("New change in slice_to_test_append_slice: %d\n", slice_to_test_append_slice[1])
+
 }
 
 func append_algorithm_check() {
