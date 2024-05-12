@@ -85,6 +85,13 @@ func main() {
 	fmt.Printf("The new change in slice_before_append_double_slice %d\n", slice_before_append_double_slice[1])
 	//? It won't change if the append didn't double the array size
 
+	print_separater()
+	//! Based on what we have known so far,there are 3 true keypoint about slice
+	//? 1. slice is a struct, it contains 3 parts: cap, len and address of array. 24 bytes of each slice size
+	//? 2. append func will return a slice if it is used to append new value to slice
+	//? 3. slice offers slice[starIndex: endIndex: CapForNewSlice] to keep the cap within endIndex
+	//? 4. cap is depends on the len(array) while len depends on endIndex
+
 }
 
 func append_algorithm_check() {
