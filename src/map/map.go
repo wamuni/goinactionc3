@@ -42,10 +42,20 @@ func main() {
 		"ForestGreen": "#228b22",
 	}
 	print_map(dict_color)
+	print_separater()
 	print_map(dict_more_color)
 	// and every time, it won't be in the same order
-
+	print_separater()
 	// how to delete element in a map
+	delete(dict_more_color, "Coral") // this method only works when the value is not zero-value
+	print_map(dict_more_color)
+	print_separater()
+	dict_more_color["GayPurple"] = "" // this is the way to append new key-value pair for a map
+	print_map(dict_more_color)
+	print_separater()
+	delete(dict_more_color, "GayPurple")
+	print_map(dict_more_color)
+
 }
 
 // function using generic in golang
