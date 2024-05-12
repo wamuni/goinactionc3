@@ -2,6 +2,10 @@ package main
 
 import "fmt"
 
+type MapType interface {
+	int | string
+}
+
 func main() {
 	fmt.Printf("Hello MotherFucker!\n")
 
@@ -28,4 +32,34 @@ func main() {
 	if exist_color {
 		fmt.Printf("dict color has value %s for key %s\n", value_color, "Red")
 	}
+
+	print_separater()
+
+	dict_more_color := map[string]string{
+		"AliceBlue":   "#f0f8ff",
+		"Coral":       "#ff7F50",
+		"DarkGray":    "#a9a9a9",
+		"ForestGreen": "#228b22",
+	}
+	print_map(dict_color)
+	print_map(dict_more_color)
+	// and every time, it won't be in the same order
+
+	// how to delete element in a map
+}
+
+// function using generic in golang
+func print_map[K comparable, V MapType](m map[K]V) {
+	for key, value := range m {
+		fmt.Print("Key: ")
+		fmt.Print(key)
+		fmt.Print(" -> ")
+		fmt.Print("Value: ")
+		fmt.Print(value)
+		fmt.Printf("\n")
+	}
+}
+
+func print_separater() {
+	fmt.Printf("------------------------------------------------------------------------\n")
 }
