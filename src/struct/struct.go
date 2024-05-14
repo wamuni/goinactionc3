@@ -22,6 +22,19 @@ type admin struct {
 // declare a new type for existing type
 type Duration int64
 
+type email_user struct {
+	name  string
+	email string
+}
+
+func (eu email_user) notify() {
+	fmt.Printf("Sending email to %s<%s>\n", eu.name, eu.email)
+}
+
+func (eu *email_user) changeEmail(email string) {
+	eu.email = email
+}
+
 func main() {
 	fmt.Printf("Hello MotherFucker\n")
 	utils.PrintSeprater()
@@ -52,6 +65,14 @@ func main() {
 	}
 	utils.PrintSeprater()
 	printAdmin(fred)
+	utils.PrintSeprater()
+	bill_email_user := email_user{"bill", "bill@email.com"}
+	bill_email_user.notify()
+	lisa_email_user := email_user{"lisa", "lisa@email.com"}
+	lisa_email_user.notify()
+	bill_email_user.changeEmail("bill.changed@email.com")
+	lisa_email_user.notify()
+	bill_email_user.notify()
 }
 
 func printUser(u User) {
