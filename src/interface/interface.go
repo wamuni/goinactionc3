@@ -77,6 +77,10 @@ type Embed_Admin struct {
 	level string
 }
 
+func (ea *Embed_Admin) notify() {
+	fmt.Printf("Sending notification to embed admin %s<%s>\n", ea.name, ea.email)
+}
+
 func sendNotification(n notifier) {
 	n.notify()
 }
@@ -88,6 +92,6 @@ func interfaceImplementation() {
 	sendNotification(&interface_admin)
 	interface_embed_admin := Embed_Admin{interface_user, "super"}
 	interface_embed_admin.User.notify()
-	interface_embed_admin.notify()
+	interface_embed_admin.notify() // if embed admin implements interface functions, then it won't use inner type's implement interface function
 	sendNotification(&interface_embed_admin)
 }
