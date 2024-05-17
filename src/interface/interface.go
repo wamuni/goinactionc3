@@ -60,7 +60,21 @@ type User struct {
 
 // As long as User has the function that interface required, then it is a notifier
 func (u *User) notify() {
-	fmt.Printf("Sending notification to user: %s<%s>", u.name, u.email)
+	fmt.Printf("Sending notification to user: %s<%s>\n", u.name, u.email)
+}
+
+type Admin struct {
+	name  string
+	email string
+}
+
+func (a *Admin) notify() {
+	fmt.Printf("Sending notifiction to admin: %s<%s>\n", a.name, a.email)
+}
+
+type Embed_Admin struct {
+	User
+	level string
 }
 
 func sendNotification(n notifier) {
@@ -70,4 +84,10 @@ func sendNotification(n notifier) {
 func interfaceImplementation() {
 	interface_user := User{"Eddie", "Eddie@Gmail.com"}
 	sendNotification(&interface_user)
+	interface_admin := Admin{"EddieBoss", "Eddie.Boss@Gmail.com"}
+	sendNotification(&interface_admin)
+	interface_embed_admin := Embed_Admin{interface_user, "super"}
+	interface_embed_admin.User.notify()
+	interface_embed_admin.notify()
+	sendNotification(&interface_embed_admin)
 }
