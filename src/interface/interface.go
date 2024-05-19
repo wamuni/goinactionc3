@@ -35,6 +35,14 @@ func main() {
 	// if err := res.Body.Close(); err != nil {
 	// 	fmt.Println(err)
 	// }
+	counter := utils.New(10)
+	fmt.Printf("Counter: %d\n", counter)
+	utils.PrintSeprater()
+	a := utils.Admin{Right: 10}
+	a.Name = "Eddie"
+	a.Email = "Eddie@Gmail.com"
+
+	fmt.Printf("User: %v\n", a)
 }
 
 func bufferWithioCopy() {
